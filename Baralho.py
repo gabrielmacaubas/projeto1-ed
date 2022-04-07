@@ -11,45 +11,43 @@ class BaralhoException(Exception):
 
 class Baralho:
     def __init__(self):
-        self.baralho = list()
-        self.__novo_baralho = None
+        self.Baralho = Pilha()
 
-        naipe = ["Ouro",    "Espada","Paus","Copas"]
-        numeracao = ["As","2","3","4","5","6","7","8","9","10","valete","dama","rei"]
-
+        self.baralho_original = list()
+        naipe = ["Ouro", "Espada", "Paus", "Copas"]
+        numeracao = ["As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "valete", "dama", "rei"]
 
         for idx in range(len(naipe)):
             for id in numeracao:
-                self.baralho.append(Carta(id, naipe[idx]))
+                self.baralho_original.append(Carta(id, naipe[idx]))
 
     def __len__(self):
-        return self.__novo_baralho.tamanho()
+        return self.Baralho.tamanho()
 
     def temCarta(self):
-        if not self.__novo_baralho.estaVazia():
+        if not self.Baralho.estaVazia():
             return True
 
         return False
-    
-    def retirarCarta(self)->Carta:
-        return self.__novo_baralho.desempilha()
+
+    def retirarCarta(self) -> Carta:
+        return self.Baralho.desempilha()
 
     def embaralhar(self):
-        baralho_embaralhado = sample(self.baralho, 52)
-
-        self.__novo_baralho = Pilha()
-        self.__novo_baralho.empilhaSerie(baralho_embaralhado)
+        baralho_embaralhado = sample(self.baralho_original, 52)
+        self.Baralho.empilhaSerie(baralho_embaralhado)
 
     def imprime(self):
-        print(self.__novo_baralho)
+        print(self.Baralho)
 
 
 if __name__ == "__main__":
     b = Baralho()
+    print("tem carta?", b.temCarta())
     b.embaralhar()
     b.imprime()
     print("tem carta?", b.temCarta())
-    for i in range(48):
+    for i in range(52):
         print(f'{b.retirarCarta()} foi desempilhado!')
     print("tem carta?", b.temCarta())
     b.imprime()

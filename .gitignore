@@ -1,4 +1,10 @@
 
 .idea/workspace.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/projeto1-ed.iml
+.idea/vcs.xml
 __pycache__/Carta.cpython-310.pyc
 __pycache__/PilhaEncadeada.cpython-310.pyc
