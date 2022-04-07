@@ -35,19 +35,12 @@ class Baralho:
 
     def embaralhar(self):
         baralho_embaralhado = sample(self.baralho_original, 52)
-        self.__baralho.empilhaSerie(baralho_embaralhado)
+
+        for c in baralho_embaralhado:
+            self.__baralho.empilha(c)
 
     def imprime(self):
-        print(self.__baralho)
+        print("Baralho:", self.__str__())
 
-
-if __name__ == "__main__":
-    b = __baralho()
-    print("tem carta?", b.temCarta())
-    b.embaralhar()
-    b.imprime()
-    print("tem carta?", b.temCarta())
-    for i in range(52):
-        print(f'{b.retirarCarta()} foi desempilhado!')
-    print("tem carta?", b.temCarta())
-    b.imprime()
+    def __str__(self):
+        return self.__baralho

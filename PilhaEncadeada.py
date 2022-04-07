@@ -37,6 +37,9 @@ class Pilha:
     def tamanho(self):
         return self.__tamanho
 
+    def topo(self):
+        return self.__head.dado
+
     def elemento(self, posicao):
         try:
             assert 0 < posicao <= self.__tamanho
@@ -68,10 +71,6 @@ class Pilha:
             contador += 1
 
         raise PilhaException(f'Valor {valor} nao esta na pilha', 'busca()')
-
-    def empilhaSerie(self, lista):
-        for i in lista:
-            self.empilha(i)
 
     def empilha(self, valor):
         novo = Node(valor)
@@ -108,5 +107,5 @@ class Pilha:
 
             cursor = cursor.prox
 
-        s += ']'
+        s += ']<-base'
         return s
