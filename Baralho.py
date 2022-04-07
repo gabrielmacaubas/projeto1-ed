@@ -11,7 +11,7 @@ class BaralhoException(Exception):
 
 class Baralho:
     def __init__(self):
-        self.Baralho = Pilha()
+        self.__baralho = Pilha()
 
         self.baralho_original = list()
         naipe = ["Ouro", "Espada", "Paus", "Copas"]
@@ -22,27 +22,27 @@ class Baralho:
                 self.baralho_original.append(Carta(id, naipe[idx]))
 
     def __len__(self):
-        return self.Baralho.tamanho()
+        return self.__baralho.tamanho()
 
     def temCarta(self):
-        if not self.Baralho.estaVazia():
+        if not self.__baralho.estaVazia():
             return True
 
         return False
 
     def retirarCarta(self) -> Carta:
-        return self.Baralho.desempilha()
+        return self.__baralho.desempilha()
 
     def embaralhar(self):
         baralho_embaralhado = sample(self.baralho_original, 52)
-        self.Baralho.empilhaSerie(baralho_embaralhado)
+        self.__baralho.empilhaSerie(baralho_embaralhado)
 
     def imprime(self):
-        print(self.Baralho)
+        print(self.__baralho)
 
 
 if __name__ == "__main__":
-    b = Baralho()
+    b = __baralho()
     print("tem carta?", b.temCarta())
     b.embaralhar()
     b.imprime()
