@@ -40,7 +40,7 @@ class Baralho:
             self.__baralho.empilha(c)
 
     def imprime(self):
-        print("Baralho:", self.__str__())
+        print("Baralho: topo->", self.__str__(), "<-base")
 
     def __str__(self):
         return self.__baralho

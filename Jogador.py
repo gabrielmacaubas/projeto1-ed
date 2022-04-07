@@ -19,7 +19,7 @@ class Jogador:
         return self.__quantidade
 
     def imprime(self):
-        print(f"Jogador {self.__nome}:", self.__str__())
+        print(f"Jogador {self.__nome}: topo->", self.__str__(), "<-base")
 
     def getNome(self):
         return self.__nome
@@ -27,6 +27,9 @@ class Jogador:
     def jogarCarta(self):
         self.__quantidade -= 1
         return self.__montante.desempilha()
+
+    def colocaBase(self, carta):
+        self.__montante.empilhaBase(carta)
 
     def __str__(self):
         return self.__montante

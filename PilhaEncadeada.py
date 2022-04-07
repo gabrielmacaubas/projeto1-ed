@@ -79,6 +79,17 @@ class Pilha:
         self.__head = novo
         self.__tamanho += 1
 
+    def empilhaBase(self, valor):
+        novo = Node(valor)
+        if self.estaVazia():
+            self.__head == novo
+            return
+        else:
+            temp = self.__head
+            while temp.prox is not None:
+                temp = temp.prox
+            temp.prox = novo
+
     def desempilha(self):
         if not self.estaVazia():
             dado = self.__head.dado
@@ -95,7 +106,7 @@ class Pilha:
     def __str__(self):
         cursor = self.__head
         primeiro = True
-        s = 'topo->['
+        s = '['
 
         while cursor is not None:
             if primeiro:
@@ -107,5 +118,5 @@ class Pilha:
 
             cursor = cursor.prox
 
-        s += ']<-base'
+        s += ']'
         return s
