@@ -4,7 +4,7 @@ from PilhaEncadeada import Pilha
 class Jogador:
 
     def __init__(self, nome):
-        self.__montante = None
+        self.__montante = Pilha()
         self.__nome = nome
         self.__quantidade = int()
 
@@ -18,9 +18,6 @@ class Jogador:
     def quantidadeCartas(self):
         return self.__quantidade
 
-    def imprime(self):
-        print(f"Jogador {self.__nome}: topo->", self.__str__(), "<-base")
-
     def getNome(self):
         return self.__nome
 
@@ -30,6 +27,9 @@ class Jogador:
 
     def colocaBase(self, carta):
         self.__montante.empilhaBase(carta)
+
+    def imprime(self):
+        print(f"Jogador {self.__nome}: topo->", self.__str__(), "<-base")
 
     def __str__(self):
         return self.__montante

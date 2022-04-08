@@ -82,7 +82,7 @@ class Pilha:
     def empilhaBase(self, valor):
         novo = Node(valor)
         if self.estaVazia():
-            self.__head == novo
+            self.__head = novo
             return
         else:
             temp = self.__head

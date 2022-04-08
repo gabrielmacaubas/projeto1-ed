@@ -38,6 +38,14 @@ class Baralho:
 
         for c in baralho_embaralhado:
             self.__baralho.empilha(c)
+        """
+        Versão alternativa ->
+    
+        suffle(self.baralho_original)
+        
+        for c in self.baralho_original:
+            self.__baralho.empilha(c)
+        """
 
     def imprime(self):
         print("Baralho: topo->", self.__str__(), "<-base")
