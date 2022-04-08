@@ -25,6 +25,7 @@ cp.empilha(j2.jogarCarta())
 print(f"O jogador {j2.getNome()} jogou a carta {cp.topo()}")
 print(f"O jogador {j1.getNome()} venceu recebeu as cartas:", end=" ")
 cp.imprime()
+
 for i in range(cp.tamanho()):
     j1.colocaBase(cp.desempilha())
 
