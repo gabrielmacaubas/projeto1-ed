@@ -14,12 +14,26 @@ class Baralho:
         self.__baralho = Pilha()
 
         self.baralho_original = list()
-        naipe = ["Ouro", "Espada", "Paus", "Copas"]
-        numeracao = ["As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "valete", "dama", "rei"]
-
-        for idx in range(len(naipe)):
-            for id in numeracao:
-                self.baralho_original.append(Carta(id, naipe[idx]))
+        self.naipe = ["Ouro", "Espada", "Paus", "Copas"]
+        self.numeracao = ["As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "valete", "dama", "rei"]
+        self.valores = {
+            'As': 1,
+            '2': 2,
+            '3': 3,
+            '4': 4,
+            '5': 5,
+            '6': 6,
+            '7': 7,
+            '8': 8,
+            '9': 9,
+            '10': 10,
+            'valete': 11,
+            'dama': 12,
+            'rei': 13
+        }
+        for idx in range(len(self.naipe)):
+            for id in self.numeracao:
+                self.baralho_original.append(Carta(id, self.naipe[idx], self.valores[id]))
 
     def __len__(self):
         return self.__baralho.tamanho()
@@ -38,14 +52,6 @@ class Baralho:
 
         for c in baralho_embaralhado:
             self.__baralho.empilha(c)
-        """
-        Versão alternativa ->
-    
-        suffle(self.baralho_original)
-        
-        for c in self.baralho_original:
-            self.__baralho.empilha(c)
-        """
 
     def imprime(self):
         print("Baralho: topo->", self.__str__(), "<-base")

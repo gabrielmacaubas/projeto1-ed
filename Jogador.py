@@ -27,6 +27,10 @@ class Jogador:
 
     def colocaBase(self, carta):
         self.__montante.empilhaBase(carta)
+        self.__quantidade += 1
+
+    def topo(self):
+        return self.__montante.topo()
 
     def imprime(self):
         print(f"Jogador {self.__nome}: topo->", self.__str__(), "<-base")
