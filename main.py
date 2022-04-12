@@ -11,14 +11,16 @@ while True:
     j1 = Jogador(input("\nNome do 1º jogador: "))
     j2 = Jogador(input("Nome do 2º jogador: "))
     rodadas = int()
+    lines = "=" * 30
 
     # inicio do jogo
-    for i in range(3):
-        sleep(1)
-        print(".")
-
+    print(lines)
+    print("\nO baralho está embaralhando...\n")
+    print(lines)
+    sleep(1)
     b.embaralhar()
     print("\nBaralho foi embaralhado!\n")
+    print(lines)
 
     sleep(1)
     j1.receberCartas(b)
@@ -40,13 +42,17 @@ while True:
             carta1_valor = j1.topo().valor
             carta2_valor = j2.topo().valor
 
+            sleep(0.3)
             cp.empilha(j1.jogarCarta())
             print(f"\nO jogador {j1.getNome()} jogou a carta {cp.topo()}")
+            sleep(0.3)
             cp.empilha(j2.jogarCarta())
             print(f"O jogador {j2.getNome()} jogou a carta {cp.topo()}")
+            
 
             if carta1_valor > carta2_valor:
                 ganhador = j1.getNome()
+                sleep(0.3)
                 print(f"O jogador {ganhador} venceu e recebeu as cartas:", end=" ")
                 cp.imprime()
 
@@ -57,6 +63,7 @@ while True:
 
             elif carta2_valor > carta1_valor:
                 ganhador = j2.getNome()
+                sleep(0.3)
                 print(f"O jogador {ganhador} venceu e recebeu as cartas:", end=" ")
                 cp.imprime()    
 
@@ -67,7 +74,7 @@ while True:
             
             print("Ops! Deu empate. Mais duas cartas na mesa!")
             continuar = input("Aperte [ENTER] para continuar")
-                
+        sleep(0.3)        
         print(f"O jogador {j1.getNome()} agora tem {j1.quantidadeCartas()} cartas")
         print(f"O jogador {j2.getNome()} agora tem {j2.quantidadeCartas()} cartas")
         continuar = input("Aperte [ENTER] para continuar")
