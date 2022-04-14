@@ -12,7 +12,11 @@ while True:
     j1 = Jogador(input("\nNome do(a) 1º jogador(a): "))
     j2 = Jogador(input("Nome do(a) 2º jogador(a): "))
     rodadas = int()
-    lines = "=" * 30
+    lines = "=" * 35
+    vermelho = '\033[91m'
+    verde = '\033[92m'
+    amarelo = '\033[93m'
+    stop = '\033[m'
 
     '''inicio do jogo'''
     print(lines)
@@ -39,9 +43,9 @@ while True:
     sleep(1)
 
     '''while de cada jogo'''
-    while j1.quantidadeCartas() != 0 and j2.quantidadeCartas() != 0 and rodadas < 100:
+    while j1.quantidadeCartas() != 0 and j2.quantidadeCartas() != 0 and rodadas < 20:
         rodadas += 1
-        print(f"\n{rodadas}ª rodada ->")
+        print(f"\n{rodadas}ª rodada de 100->")
         
         '''while de cada rodada'''
         while True:
@@ -66,9 +70,10 @@ while True:
                 if carta1_valor > carta2_valor:
                     ganhador = j1.getNome()
                     sleep(0.1)
-                    print(f"O(a) jogador(a) {ganhador} venceu e recebeu as cartas:", end=" ")
+                    print(f"{amarelo}O(a) jogador(a) {ganhador} venceu e recebeu as cartas:", end=" ")
                     cp.imprime()
-                    
+                    print(stop)
+
                     for i in range(cp.tamanho()):
                         j1.colocaBase(cp.desempilha())
                     
@@ -77,8 +82,9 @@ while True:
                 elif carta2_valor > carta1_valor:
                     ganhador = j2.getNome()
                     sleep(0.1)
-                    print(f"O(a) jogador(a) {ganhador} venceu e recebeu as cartas:", end=" ")
-                    cp.imprime()    
+                    print(f"{amarelo}O(a) jogador(a) {ganhador} venceu e recebeu as cartas:", end=" ")
+                    cp.imprime()
+                    print(stop)    
 
                     for i in range(cp.tamanho()):
                         j2.colocaBase(cp.desempilha()) 
@@ -87,7 +93,7 @@ while True:
             except PilhaException as pe:
                 print(pe)
             
-            print("Ops! Deu empate. Mais duas cartas na mesa!")
+            print(f"{vermelho}Ops! Deu empate. Mais duas cartas na mesa!{stop}")
             continuar = input("Aperte [ENTER] para continuar")
 
         sleep(0.1)        
@@ -99,10 +105,14 @@ while True:
     '''teste para definir vencedor do jogo'''
     print()
     if j1.quantidadeCartas() > j2.quantidadeCartas():
-        print(f"O jogador {j1.getNome()} ganhou o jogo!")
-    
+        print(f"{verde}{lines}")
+        print(f"O(a) jogador(a) {j1.getNome()} ganhou o jogo!")
+        print(f"{lines}{stop}")
+
     elif j2.quantidadeCartas() > j1.quantidadeCartas(): 
-        print(f"O jogador {j2.getNome()} ganhou o jogo!")
+        print(f"{verde}{lines}")
+        print(f"O(a) jogador(a) {j2.getNome()} ganhou o jogo!")
+        print(f"{lines}{stop}")
         
     
     else:
