@@ -111,9 +111,9 @@ class Pilha:
             while temp.prox is not None:
                 temp = temp.prox
             temp.prox = novo
-                
-        
      
+        self.__tamanho += 1
+
     '''Método que desempilha um elemento da pilha.'''
     def desempilha(self):
 

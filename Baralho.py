@@ -1,7 +1,7 @@
 # Baralho = coleçao de cartas (lista de cartas)
 from Carta import Carta
 from PilhaEncadeada import Pilha
-from random import sample
+from random import shuffle
 
 '''Classe para tratamento de erro'''
 class BaralhoException(Exception):
@@ -10,33 +10,27 @@ class BaralhoException(Exception):
 
 
 class Baralho:
+
     def __init__(self):
+        '''Definição inicial do baralho como uma Pilha (estrutura 
+        pedida para o projeto), com naipe, numeração, e o valor 
+        atribuído a cada numeração a partir de um dicionário.'''
+        baralho = list()
+        naipe = ["Ouro", "Espada", "Paus", "Copas"]
+        numeracao = {'As': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'valete': 11, 'dama': 12, 'rei': 13}
 
-        '''Definição inicial do baralho como uma Pilha (estrutura pedida para o projeto), com naipe, numeração, e o valor atribuído a cada numeração a partir de um dicionário.'''
+        '''For utilizado para atribuir as informações anteriores a 
+        uma lista só, a partir do length do naipe, e da 
+        numeração'''
+        for idx in range(len(naipe)):
+            for chave, valor in numeracao.items():
+                baralho.append(Carta(chave, naipe[idx], valor))
+        
+        '''Atribuição de todas as cartas do baralho em uma pilha 
+        para uma pilha encadeada'''
         self.__baralho = Pilha()
-        self.baralho_original = list()
-        self.naipe = ["Ouro", "Espada", "Paus", "Copas"]
-        self.numeracao = ["As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "valete", "dama", "rei"]
-        self.valores = {
-            'As': 1,
-            '2': 2,
-            '3': 3,
-            '4': 4,
-            '5': 5,
-            '6': 6,
-            '7': 7,
-            '8': 8,
-            '9': 9,
-            '10': 10,
-            'valete': 11,
-            'dama': 12,
-            'rei': 13
-        }
-
-        '''For utilizado para atribuir as informações anteriores a uma lista só, a partir do length do naipe, e da numeração'''
-        for idx in range(len(self.naipe)):
-            for id in self.numeracao:
-                self.baralho_original.append(Carta(id, self.naipe[idx], self.valores[id]))
+        for c in baralho:
+            self.__baralho.empilha(c)
 
     '''Método para determinar o tamanho do baralho.'''
     def __len__(self):
@@ -59,14 +53,20 @@ class Baralho:
 
     '''Método para embaralhar o baralho'''
     def embaralhar(self):
-        '''Cria baralho embaralhado temporário usando sample ao invés de shuffle para manter o self.baralho_original intacto.'''
-        baralho_embaralhado = sample(self.baralho_original, 52)
-
-        '''Começa a empilhar as cartas do baralho embaralhado no baralho padrão que é uma pilha encadeada.'''
-        for c in baralho_embaralhado:
+        '''Cria baralho temporário onde é usado a função shuffle 
+        da biblioteca random'''
+        baralho_temp = list()
+        for i in range(self.__baralho.tamanho()):
+            baralho_temp.append(self.__baralho.desempilha())
+        
+        '''Começa a empilhar as cartas do baralho temporário já 
+        embaralhadas no baralho padrão que é uma pilha encadeada'''
+        shuffle(baralho_temp)
+        for c in baralho_temp:
             self.__baralho.empilha(c)
 
-    '''Método para imprimir todos os elementos do baralho, desde o topo até a base.'''
+    '''Método para imprimir todos os elementos do baralho, desde o 
+    topo até a base.'''
     def imprime(self):
         print("Baralho: topo->", self.__str__(), "<-base")
 

@@ -13,6 +13,10 @@ class Jogador:
         self.__nome = nome
         self.__quantidade = int()
 
+    '''Método que retorna o tamanho do montante'''
+    def __len__(self):
+        return self.__montante.tamanho()
+
     '''Método para recebimento de cartas'''
     def receberCartas(self, baralho):
         self.__montante = Pilha()
@@ -44,8 +48,9 @@ class Jogador:
             self.__quantidade -= 1
             return self.__montante.desempilha()
 
-    '''Método que desempilha as cartas do campo de batalha, e empilha na base do baralho do jogador'''
-    def colocaBase(self, carta):
+    '''Método que desempilha as cartas do campo de batalha, e 
+    empilha na base do baralho do jogador'''
+    def inserirBase(self, carta):
         self.__montante.empilhaBase(carta)
         self.__quantidade += 1
         
