@@ -12,10 +12,14 @@ while True:
     j1 = Jogador(input("\nNome do(a) 1º jogador(a): "))
     j2 = Jogador(input("Nome do(a) 2º jogador(a): "))
     rodadas = int()
+    rodadas_max = 100
+
+    '''Variáveis de cores'''
     lines = "=" * 35
     vermelho = '\033[91m'
     verde = '\033[92m'
     amarelo = '\033[93m'
+    negrito = '\033[1m'
     stop = '\033[m'
 
     '''inicio do jogo'''
@@ -43,9 +47,9 @@ while True:
     sleep(1)
 
     '''while de cada jogo'''
-    while len(j1) != 0 and len(j2) != 0 and rodadas < 20:
+    while len(j1) != 0 and len(j2) != 0 and rodadas < rodadas_max:
         rodadas += 1
-        print(f"\n{rodadas}ª rodada de 100->")
+        print(f"\n{negrito}{rodadas}ª rodada de {rodadas_max}->{stop}")
         
         '''while de cada rodada'''
         while True:
