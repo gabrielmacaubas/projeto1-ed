@@ -32,7 +32,6 @@ while True:
     b.embaralhar()
     print("\nBaralho foi embaralhado!\n")
     print(lines)
-
     sleep(1)
 
     # Os 2 jogadores recebem suas 26 cartas
