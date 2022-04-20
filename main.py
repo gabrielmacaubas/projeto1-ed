@@ -14,7 +14,7 @@ while True:
     j2 = Jogador(input("Nome do(a) 2º jogador(a): "))
 
     rodadas = int()
-    rodadas_max = 2
+    rodadas_max = 100
 
     # Variáveis de cores
     lines = "=" * 35
@@ -37,9 +37,9 @@ while True:
 
     # Os 2 jogadores recebem suas 26 cartas
     try:
-        j1.receberCartas(b)
+        j1.receberCartas(b, 2)
         print(f"O(a) jogador(a) {j1.getNome()} recebeu {len(j1)} cartas!")
-        j2.receberCartas(b)
+        j2.receberCartas(b, 2)
         print(f"O(a) jogador(a) {j2.getNome()} recebeu {len(j2)} cartas!\n")
     except BaralhoException as be:
         print(be)
@@ -108,7 +108,9 @@ while True:
 
         sleep(0.1)        
         print(f"O(a) jogador(a) {j1.getNome()} agora tem {len(j1)} cartas")
+        j1.imprime()
         print(f"O(a) jogador(a) {j2.getNome()} agora tem {len(j2)} cartas")
+        j2.imprime()
         continuar = input("Aperte [ENTER] para continuar")
         
 

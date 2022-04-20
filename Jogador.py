@@ -13,27 +13,21 @@ class Jogador:
     def __init__(self, nome: str):
         self.__montante = Pilha()
         self.__nome = nome
-        self.__quantidade = int()
 
     # Método que retorna o tamanho do montante
     def __len__(self):
         return self.__montante.tamanho()
 
     # Método para recebimento de cartas
-    def receberCartas(self, baralho):
+    def receberCartas(self, baralho, quantidade):
         self.__montante = Pilha()
 
-        for i in range(26):
+        for i in range(quantidade):
             self.__montante.empilha(baralho.retirarCarta())
-            self.__quantidade += 1
-
-    # Método para retornar a quantidade de cartas
-    def quantidadeCartas(self):
-        return self.__quantidade
     
     # Método que confere se o montante do jogador está vazio
     def esta_vazia(self):
-        if self.quantidadeCartas() == 0:
+        if len(self) == 0:
             return True
         return False
 
@@ -47,14 +41,12 @@ class Jogador:
             raise JogadorException(f"A pilha do jogador {self.getNome} está vazia.")
 
         else:
-            self.__quantidade -= 1
             return self.__montante.desempilha()
 
     """Método que desempilha as cartas do campo de batalha, e 
     empilha na base do baralho do jogador"""
     def inserirBase(self, carta):
         self.__montante.empilhaBase(carta)
-        self.__quantidade += 1
         
     # Método que retorna o topo do montante do Jogador
     def topo(self):

@@ -105,7 +105,7 @@ class Pilha:
         ou seja, o último nó."""
         if self.estaVazia():
             self.__head = novo
-            return
+
         else:
             temp = self.__head
             while temp.prox is not None:
