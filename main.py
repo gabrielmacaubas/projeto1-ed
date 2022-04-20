@@ -9,10 +9,12 @@ while True:
     print("Início do jogo!")
     b = Baralho()
     cp = Pilha()
+
     j1 = Jogador(input("\nNome do(a) 1º jogador(a): "))
     j2 = Jogador(input("Nome do(a) 2º jogador(a): "))
+
     rodadas = int()
-    rodadas_max = 100
+    rodadas_max = 2
 
     # Variáveis de cores
     lines = "=" * 35
@@ -127,8 +129,16 @@ while True:
         print('Houve um empate!')
 
     # teste para saber se o usuário quer jogar mais um jogo
-    reset = input("\nJogo encerrado. Deseja iniciar um novo jogo? (S/N) ").upper()
+
+    while True:
+        reset = input("\nJogo encerrado. Deseja iniciar um novo jogo? (S/N) ").upper()
     
+        if reset != "N" and reset != "S":
+            print("Caractere inválido")
+
+        else:
+            break
+
     if reset == "N":
         break
 

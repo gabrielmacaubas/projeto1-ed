@@ -10,7 +10,7 @@ class JogadorException(Exception):
 class Jogador:
 
     # Método construtor de Jogador
-    def __init__(self, nome):
+    def __init__(self, nome: str):
         self.__montante = Pilha()
         self.__nome = nome
         self.__quantidade = int()
