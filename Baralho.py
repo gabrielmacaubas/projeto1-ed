@@ -74,6 +74,7 @@ class Baralho:
     def imprime(self):
         print("Baralho: topo->", self.__str__(), "<-base")
 
+        
     # Método que transforma o objeto em string.
     def __str__(self):
         return self.__baralho
